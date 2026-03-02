@@ -16,12 +16,15 @@ jobs:
           repository: Jack6131/testingkeys
           path: external
 
-      - name: Install yq
-        run: sudo apt-get update && sudo apt-get install -y yq
+      - name: Install yq (mikefarah)
+        run: |
+          sudo wget -qO /usr/local/bin/yq \
+            https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
 
       - name: Preprocess external workflow
-        run: |
-          echo "::group::Preprocessed workflow"
-          yq eval '.jobs.build.runs-on = "ubuntu-latest"' \
-          external/.github/workflows/blank.yml
-          echo "::endgroup::"
+      run: |
+        echo "::group::Preprocessed workflow"
+        yq eval '.jobs.build.runs-on = "ubuntu-latest"' \
+        external/.github/workflows/blank.yml
+        echo "::endgroup::"
