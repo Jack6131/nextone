@@ -1,6 +1,6 @@
 name: Preprocess external workflow
 
-on: workflow_dispatch
+on: push
 
 jobs:
   preprocess:
