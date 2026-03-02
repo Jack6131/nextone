@@ -23,5 +23,5 @@ jobs:
         run: |
           echo "::group::Preprocessed workflow"
           yq eval '.jobs.build.runs-on = "ubuntu-latest"' \
-            external/.github/workflows/blank.yml
+          external/.github/workflows/blank.yml
           echo "::endgroup::"
