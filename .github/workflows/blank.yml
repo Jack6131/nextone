@@ -23,8 +23,8 @@ jobs:
           sudo chmod +x /usr/local/bin/yq
 
       - name: Preprocess external workflow
-      run: |
-        echo "::group::Preprocessed workflow"
-        yq eval '.jobs.build.runs-on = "ubuntu-latest"' \
-        external/.github/workflows/blank.yml
-        echo "::endgroup::"
+        run: |
+          echo "::group::Preprocessed workflow"
+          yq eval '.jobs.build.runs-on = "ubuntu-latest"' \
+          external/.github/workflows/blank.yml
+          echo "::endgroup::"
